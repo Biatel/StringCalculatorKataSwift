@@ -12,8 +12,11 @@ class StringCalculator {
     
     func add(numbers: String) -> Int {
         if numbers.contains(",") {
-            let numbersArray = numbers.split(separator: ",")
-            return toInt(numbersArray[0]) + toInt(numbersArray[1])
+            return numbers
+                .split(separator: ",")
+                .reduce(0) { (accumulation: Int, each: Substring) -> Int in
+                    return accumulation + toInt(each)
+            }
         }
         
         return toInt(numbers)
