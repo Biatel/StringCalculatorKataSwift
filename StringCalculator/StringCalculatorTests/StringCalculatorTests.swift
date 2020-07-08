@@ -24,4 +24,8 @@ class StringCalculatorTests: XCTestCase {
     func testAddAllowAnyAmountOfNumbersToSum() {
         XCTAssertEqual(6, stringCalculator.add(numbers: "1,2,3"))
     }
+    
+    func testAddAllowNewLinesAsNumberSeparator() {
+        XCTAssertEqual(6, stringCalculator.add(numbers: "1\n2,3"))
+    }
 }

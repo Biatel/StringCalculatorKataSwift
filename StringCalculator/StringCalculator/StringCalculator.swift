@@ -12,6 +12,7 @@ class StringCalculator {
         }
         
         return numbers
+            .replacingOccurrences(of: "\n", with: ",")
             .split(separator: ",")
             .reduce(0) { (accumulation: Int, each: Substring) -> Int in
                 return accumulation + toInt(each)
