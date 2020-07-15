@@ -24,4 +24,12 @@ class StringCalculatorTests: XCTestCase {
     func testAddAllowNewLinesAsNumberSeparator() {
         XCTAssertEqual(6, stringCalculator.add(numbers: "1\n2,3"))
     }
+    
+    func testAddWithCustomDelimiter() {
+        XCTAssertEqual(3, stringCalculator.add(numbers: "//;\n1;2"))
+    }
+    
+    func testAddWithCustomDelimiterMultipleNumbersToSum() {
+        XCTAssertEqual(6, stringCalculator.add(numbers: "//;\n1;2;3"))
+    }
 }
