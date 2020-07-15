@@ -3,22 +3,22 @@ import Foundation
 class StringCalculator {
     
     func add(numbers: String) -> Int {
+        var numbersToAdd: String = numbers
+        var separator: String = ","
+        
         guard !numbers.isEmpty else {
             return 0
         }
         
         if numbers.starts(with: "//") {
             let x = numbers.split(separator: "\n", maxSplits: 1, omittingEmptySubsequences: true)
-            let separator = String((x.first?.dropFirst(2))!)
-            let numbersToAdd = String(x.last!)
-            return numbersToAdd.split(separator: Character(separator))
-                .reduce(0) { (accumulation: Int, each: Substring) -> Int in
-                    return accumulation + toInt(each) }
+            separator = String((x.first?.dropFirst(2))!)
+            numbersToAdd = String(x.last!)
         }
         
-        return numbers
-            .replacingOccurrences(of: "\n", with: ",")
-            .split(separator: ",")
+        return numbersToAdd
+            .replacingOccurrences(of: "\n", with: separator)
+            .split(separator: Character(separator))
             .reduce(0) { (accumulation: Int, each: Substring) -> Int in
                 return accumulation + toInt(each) }
     }
